@@ -3,10 +3,10 @@ name: CI and CD data model
 on:
   push:
     branches:
-      - main
+      - staging
   pull_request:
     branches:
-      - main
+      - staging
 
 jobs:
   retraining_model:
@@ -37,3 +37,12 @@ jobs:
           cml-publish feature_importance.png --md >> report.md
           
           cml-send-comment report.md
+    needs:
+    with:
+    permissions:
+    name:
+    uses:
+    strategy:
+    if:
+    secrets:
+    concurrency:
